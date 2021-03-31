@@ -18,7 +18,6 @@ namespace readMRZ
 
 	std::string readMRZ::processImage(const std::string& imagePath) const
 	{
-		//std::string image_path{ "C:\\Users\\antoniocs\\Projects\\Personal\\cpp\\Inflyter\\ReadMRZFromPassport\\test_data\\mrz_example_01.jpg" };
 		cv::Mat imgGrey = cv::imread(imagePath); // , cv::IMREAD_GRAYSCALE);
 		cv::Mat mrz{};
 		std::string result{};
@@ -33,9 +32,7 @@ namespace readMRZ
 			cv::Mat roi_thresh;
 			threshold(roi_grey, roi_thresh, 0, 255, cv::THRESH_BINARY | cv::THRESH_OTSU);
 
-			//tesseract::TessBaseAPI* ocr = new tesseract::TessBaseAPI();
-			tesseract::TessBaseAPI ocr{};// = new tesseract::TessBaseAPI();
-
+			tesseract::TessBaseAPI ocr{};
 			ocr.Init(!m_tesseractDataPath.empty() ? m_tesseractDataPath.c_str() : nullptr, "eng", tesseract::OEM_LSTM_ONLY);
 			ocr.SetPageSegMode(tesseract::PSM_AUTO);			
 			ocr.SetImage(static_cast<uchar*>(roi_thresh.data), roi_thresh.size().width, roi_thresh.size().height, roi_thresh.channels(), roi_thresh.step1());
