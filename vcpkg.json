@@ -1,0 +1,12 @@
+{
+	"name": "readmrz",
+	"version-string": "0.1.0-dev",
+	"homepage": "",
+	"description": "",
+	"dependencies": [
+		"spdlog",
+		"opencv4",
+		"tesseract",
+		"catch2"
+	]
+}
