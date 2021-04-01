@@ -32,10 +32,6 @@ file(
 
 set(READMRZ_LIBNAME readMRZ)
 
-#add_executable(
-#    ${OUTPUT_FILE} ${PROJ_SRC_FILES}
-#)
-
 add_library(${READMRZ_LIBNAME} STATIC
 	${PROJ_SRC_FILES}
 )
