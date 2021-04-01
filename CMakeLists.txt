@@ -36,15 +36,15 @@ add_library(${READMRZ_LIBNAME} STATIC
 	${PROJ_SRC_FILES}
 )
 
-#target_compile_options(${OUTPUT_FILE}
-# PRIVATE
-#	$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
-#		-Werror -Wall -Wextra
-#	>
-#	$<$<CXX_COMPILER_ID:MSVC>:
-#		/W4
-#	>
-#)
+target_compile_options(${READMRZ_LIBNAME}
+ PRIVATE
+	$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
+		-Werror -Wall -Wextra
+	>
+	$<$<CXX_COMPILER_ID:MSVC>:
+		/W4
+	>
+)
 
 target_include_directories(
     ${READMRZ_LIBNAME} PUBLIC
@@ -58,16 +58,11 @@ set_target_properties(${READMRZ_LIBNAME}
 	DEBUG_POSTFIX _d
 )
 
-find_package(spdlog CONFIG REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(Tesseract CONFIG REQUIRED)
-#find_package(Leptonica CONFIG REQUIRED)
-    
-target_link_libraries(${READMRZ_LIBNAME} PRIVATE spdlog::spdlog spdlog::spdlog_header_only)
-target_link_libraries(${READMRZ_LIBNAME} PUBLIC opencv_core opencv_imgcodecs opencv_imgproc opencv_highgui)
+target_link_libraries(${READMRZ_LIBNAME} PRIVATE opencv_core opencv_imgcodecs opencv_imgproc opencv_highgui)
 target_link_libraries(${READMRZ_LIBNAME} PRIVATE libtesseract)
-#target_link_libraries(${OUTPUT_FILE} PRIVATE leptonica)
 
-#if (READMRZ_ENABLE_TESTS)
+if (READMRZ_ENABLE_TESTS)
 	add_subdirectory(tests)
-#endif()
+endif()
