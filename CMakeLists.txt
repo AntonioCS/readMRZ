@@ -66,3 +66,6 @@ target_link_libraries(${READMRZ_LIBNAME} PRIVATE libtesseract)
 if (READMRZ_ENABLE_TESTS)
 	add_subdirectory(tests)
 endif()
+
+
+add_subdirectory(cli)
