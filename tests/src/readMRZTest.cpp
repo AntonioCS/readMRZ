@@ -8,15 +8,15 @@
 TEST_CASE("Read MRZ from images", "[readMRZ]")
 {
 	std::vector<std::pair<std::string, std::string>> testData{
-		{			
+		{
 			"test_data/mrz_example_01.jpg",
 			"IDBEL590335801485120100200<<<<8512017F0901015BEL<<<<<<<<<<<7REINARTZ<<ULRIKE<KATIA<E<<<<<<"
 		},
-		{			
+		{
 			"test_data/mrz_example_02.jpg",
 			"IDFRABERTHIER<<<<<<<<<<<<<<<<<<<<<<<9409923102854CORINNE<<<<<<<6512068F4"
 		},
-		{			
+		{
 			"test_data/mrz_example_03.jpg",
 			"IOHRV000000000000000000000<<<<0000000M0000000HRV<<<<<<<<<<<0UZORAK<<SPECIMEN<<<<<<<<<<<<<<"
 		},
@@ -28,7 +28,7 @@ TEST_CASE("Read MRZ from images", "[readMRZ]")
 			"test_data/mrz_example_05.jpg",
 			"P<GBRJENNINGS<<PAUL<MICHAEL<<<<<<<<<<<<<<<<<0123456784GBR5011025M0810050<<<<<<<<<<<<<<00"
 		},
-		{
+		{ // Causes an issue on linux (might be from the opencv of vcpkg)
 			"test_data/mrz_example_06.jpg",
 			"P<HRVSPECIMEN<<SPECIMEN<<<<<<<<<<<<<<<<<<<<<10070070071HRV8212258F1407019<<<<<<<<<<<<<<06"
 		},
