@@ -20,6 +20,10 @@ endif()
 
 option(READMRZ_ENABLE_TESTS "Build the tests" ON)
 
+if(READMRZ_ENABLE_TESTS)
+	list(APPEND VCPKG_MANIFEST_FEATURES "tests")
+endif()
+
 set(READMRZ_DIR ${PROJECT_SOURCE_DIR})
 set(READMRZ_INCLUDES_DIR ${PROJECT_SOURCE_DIR}/include/)
 set(READMRZ_SRC_DIR ${PROJECT_SOURCE_DIR}/src/)
@@ -30,13 +34,12 @@ file(
 	${READMRZ_SRC_DIR}/*.cpp ${READMRZ_SRC_DIR}/*.h* ${READMRZ_INCLUDES_DIR}/readMRZ/*.h*
 )
 
-set(READMRZ_LIBNAME readMRZ)
 
-add_library(${READMRZ_LIBNAME} STATIC
+add_library(readMRZ STATIC
 	${PROJ_SRC_FILES}
 )
 
-target_compile_options(${READMRZ_LIBNAME}
+target_compile_options(readMRZ
  PRIVATE
 	$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
 		-Werror -Wall -Wextra
@@ -46,26 +49,24 @@ target_compile_options(${READMRZ_LIBNAME}
 	>
 )
 
-target_include_directories(
-    ${READMRZ_LIBNAME} PUBLIC
+target_include_directories(readMRZ PUBLIC
     $<BUILD_INTERFACE:${READMRZ_INCLUDES_DIR}>
     $<INSTALL_INTERFACE:${CMAKE_INSTALL_LIBDIR}>
 )
 
 #to generate debug lib with d append to it
-set_target_properties(${READMRZ_LIBNAME} 
+set_target_properties(readMRZ
 	PROPERTIES 
 	DEBUG_POSTFIX _d
 )
 
 find_package(OpenCV REQUIRED)
 find_package(Tesseract CONFIG REQUIRED)
-target_link_libraries(${READMRZ_LIBNAME} PRIVATE opencv_core opencv_imgcodecs opencv_imgproc opencv_highgui)
-target_link_libraries(${READMRZ_LIBNAME} PRIVATE libtesseract)
+target_link_libraries(readMRZ PRIVATE opencv_core opencv_imgcodecs opencv_imgproc)
+target_link_libraries(readMRZ PRIVATE libtesseract)
 
 if (READMRZ_ENABLE_TESTS)
 	add_subdirectory(tests)
 endif()
-
 
 add_subdirectory(cli)
