@@ -37,7 +37,7 @@ namespace readMRZ
 		if (find_mrz(img, mrz)) {
 			m_ocr.SetImage(static_cast<uchar*>(mrz.data), mrz.size().width, mrz.size().height, mrz.channels(), mrz.step1());
 			m_ocr.SetSourceResolution(209);
-			m_ocr.Recognize(nullptr);
+			//m_ocr.Recognize(nullptr);
 
 			result = m_ocr.GetUTF8Text();
 		} else {
