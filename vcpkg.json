@@ -4,9 +4,23 @@
 	"homepage": "",
 	"description": "",
 	"dependencies": [
-		"spdlog",
-		"opencv4",
-		"tesseract",
-		"catch2"
-	]
+		"protobuf",
+		{
+			"name": "opencv4",
+			"default-features": false,
+			"features": [
+				"jpeg",
+				"png",
+				"tiff",
+				"webp"
+			]
+		},
+		"tesseract"
+	],
+	"features": {
+		"tests": {
+			"description": "Build Tests",
+			"dependencies": [ "catch2" ]
+		}
+	}
 }
