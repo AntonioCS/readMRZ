@@ -3,14 +3,13 @@
 
 int main(int argc, char **argv)
 {
-	if (argc < 2) {
-		std::cout << "Please provide an image\n";
+	if (argc < 3) {
+		std::cout << "Usage: readMRZcli <DataFolderPath> <ImagePath>\n";
 		exit(1);
 	}
 
+	readMRZ::readMRZ mrz{ argv[1] };
+	std::cout << mrz.processImage(argv[2]);
 
-	std::cout << argv[2];
-	
-	//readMRZ::readMRZ mrz{ "tessdata/" };
-	
+	return 0;
 }
