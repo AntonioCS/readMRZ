@@ -4,6 +4,7 @@ WORKDIR /projects
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends --fix-missing \
+        ninja-build \
         wget  \
         unzip \
         zip && \
