@@ -4,17 +4,7 @@
 	"homepage": "",
 	"description": "",
 	"dependencies": [
-		"protobuf",
-		{
-			"name": "opencv4",
-			"default-features": false,
-			"features": [
-				"jpeg",
-				"png",
-				"tiff",
-				"webp"
-			]
-		},
+		"opencv4",
 		"tesseract"
 	],
 	"features": {
