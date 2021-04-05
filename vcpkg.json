@@ -5,12 +5,7 @@
 	"description": "",
 	"dependencies": [
 		"opencv4",
-		"tesseract"
-	],
-	"features": {
-		"tests": {
-			"description": "Build Tests",
-			"dependencies": [ "catch2" ]
-		}
-	}
+		"tesseract",
+		"catch2"
+	]
 }
