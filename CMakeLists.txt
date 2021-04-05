@@ -62,6 +62,10 @@ set_target_properties(readMRZ
 
 find_package(OpenCV REQUIRED)
 find_package(Tesseract CONFIG REQUIRED)
+#To fix issues on linux
+find_path(TESSERACT_INC tesseract/baseapi.h)
+include_directories(${TESSERACT_INC})
+
 target_link_libraries(readMRZ PRIVATE opencv_core opencv_imgcodecs opencv_imgproc)
 target_link_libraries(readMRZ PRIVATE libtesseract)
 
