@@ -19,8 +19,9 @@ RUN apt-get update && \
     git clone https://github.com/microsoft/vcpkg.git && \
     git clone https://github.com/AntonioCS/readMRZ.git && \
     cd vcpkg/ && \
-    ./bootstrap-vcpkg.sh && \
-    cd /projects/readMRZ && \
+    ./bootstrap-vcpkg.sh
+
+RUN cd /projects/readMRZ && \
     mkdir build && \
     cd build && \
     cmake -DVCPKG_TARGET_TRIPLET=x64-linux -DREADMRZ_ENABLE_TESTS=off -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=/projects/vcpkg/scripts/buildsystems/vcpkg.cmake .. && \
