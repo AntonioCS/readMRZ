@@ -26,7 +26,7 @@ find_package(Catch2 CONFIG REQUIRED)
 
 target_link_libraries(unit_tests
 	PRIVATE
-		${READMRZ_LIBNAME}
+		readMRZ
 		Catch2::Catch2
 )
 

@@ -24,7 +24,7 @@ target_include_directories(readMRZcli
 
 target_link_libraries(readMRZcli
 	PRIVATE
-		${READMRZ_LIBNAME}
+		readMRZ
 )
 
 add_custom_command(
