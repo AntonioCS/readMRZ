@@ -20,6 +20,8 @@ RUN apt-get update && \
     git clone https://github.com/AntonioCS/readMRZ.git && \
     cd vcpkg/ && \
     ./bootstrap-vcpkg.sh
+#    ./vcpkg install opencv && \
+#    ./vcpkg install tesseract
 
 RUN cd /projects/readMRZ && \
     mkdir build && \
